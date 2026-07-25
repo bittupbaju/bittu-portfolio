@@ -203,6 +203,79 @@
     .project-card .project-visual{ border-right:none; border-bottom:1px solid var(--line); }
   }
 
+  /* interactivity: custom cursor */
+  @media (hover:hover) and (pointer:fine){
+    body{ cursor:none; }
+    .cursor-dot, .cursor-ring{
+      position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
+      border-radius:50%; transform:translate(-50%,-50%);
+      transition:opacity .2s ease;
+    }
+    .cursor-dot{ width:6px; height:6px; background:var(--amber); }
+    .cursor-ring{
+      width:38px; height:38px; border:1px solid var(--amber);
+      transition:width .18s ease, height .18s ease, border-color .18s ease, transform .05s linear, opacity .2s ease;
+    }
+    .cursor-ring.hover{ width:64px; height:64px; border-color:var(--teal); }
+    .cursor-ring::after{
+      content:''; position:absolute; inset:0; border-radius:50%;
+    }
+    .cursor-label{
+      position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%);
+      font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.08em; color:var(--bg);
+      background:var(--teal); padding:3px 7px; border-radius:20px; opacity:0; transition:opacity .18s ease;
+      text-transform:uppercase; white-space:nowrap;
+    }
+    .cursor-label.show{ opacity:1; }
+  }
+
+  /* interactivity: scroll reveal */
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  .film-grid > *, .photo-grid > *, .reel-strip > *{
+    opacity:0; transform:translateY(20px) scale(.98);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .film-grid.in-view > *, .photo-grid.in-view > *, .reel-strip.in-view > *{ opacity:1; transform:translateY(0) scale(1); }
+  .film-grid.in-view > *:nth-child(1), .photo-grid.in-view > *:nth-child(1), .reel-strip.in-view > *:nth-child(1){ transition-delay:.03s; }
+  .film-grid.in-view > *:nth-child(2), .photo-grid.in-view > *:nth-child(2), .reel-strip.in-view > *:nth-child(2){ transition-delay:.1s; }
+  .film-grid.in-view > *:nth-child(3), .photo-grid.in-view > *:nth-child(3), .reel-strip.in-view > *:nth-child(3){ transition-delay:.17s; }
+  .film-grid.in-view > *:nth-child(4), .photo-grid.in-view > *:nth-child(4), .reel-strip.in-view > *:nth-child(4){ transition-delay:.24s; }
+  .film-grid.in-view > *:nth-child(5), .photo-grid.in-view > *:nth-child(5), .reel-strip.in-view > *:nth-child(5){ transition-delay:.31s; }
+  .film-grid.in-view > *:nth-child(6), .photo-grid.in-view > *:nth-child(6), .reel-strip.in-view > *:nth-child(6){ transition-delay:.38s; }
+
+  /* interactivity: hover zoom on cards/images */
+  .film-card, .photo-grid .frame, .reel-strip .frame, .project-card{
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .film-card:hover, .photo-grid .frame:hover, .reel-strip .frame:hover{
+    transform:translateY(-6px); box-shadow:0 14px 30px rgba(0,0,0,.35);
+  }
+  .project-card:hover{ box-shadow:0 14px 34px rgba(0,0,0,.4); }
+  .photo-grid .frame img, .film-card img{ transition:transform .5s ease; }
+  .photo-grid .frame:hover img, .film-card:hover img{ transform:scale(1.06); }
+
+  /* interactivity: film-reel scrubber */
+  .scrubber{
+    position:fixed; right:22px; top:50%; transform:translateY(-50%); z-index:60;
+    display:flex; flex-direction:column; align-items:flex-end; gap:14px;
+  }
+  .scrubber a{
+    display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace;
+    font-size:10px; color:var(--muted); letter-spacing:.04em; text-transform:uppercase;
+  }
+  .scrubber .dot{
+    width:7px; height:7px; border-radius:50%; border:1px solid var(--muted); flex-shrink:0;
+    transition:background .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .scrubber .label{
+    opacity:0; transform:translateX(6px); transition:opacity .2s ease, transform .2s ease; white-space:nowrap;
+  }
+  .scrubber a:hover .label{ opacity:1; transform:translateX(0); }
+  .scrubber a.active .dot{ background:var(--amber); border-color:var(--amber); transform:scale(1.3); }
+  .scrubber a.active .label{ opacity:1; transform:translateX(0); color:var(--amber); }
+  @media (max-width:1100px){ .scrubber{ display:none; } }
+
   /* skills */
   .skill-row{ display:flex; flex-wrap:wrap; gap:10px; }
   .skill-pill{
@@ -250,6 +323,22 @@
 </head>
 <body>
 <div class="grain"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+<div class="cursor-label"></div>
+
+<nav class="scrubber">
+  <a href="#about"><span class="dot"></span><span class="label">About</span></a>
+  <a href="#film"><span class="dot"></span><span class="label">Film</span></a>
+  <a href="#brand"><span class="dot"></span><span class="label">Brand</span></a>
+  <a href="#reel"><span class="dot"></span><span class="label">Reel</span></a>
+  <a href="#photo"><span class="dot"></span><span class="label">Photo</span></a>
+  <a href="#documentary"><span class="dot"></span><span class="label">Doc</span></a>
+  <a href="#food"><span class="dot"></span><span class="label">Food</span></a>
+  <a href="#projects"><span class="dot"></span><span class="label">Projects</span></a>
+  <a href="#skills"><span class="dot"></span><span class="label">Skills</span></a>
+  <a href="#contact"><span class="dot"></span><span class="label">Contact</span></a>
+</nav>
 
 <nav>
   <div class="brand">BITTU P BAJU</div>
@@ -285,7 +374,7 @@
   </div>
 </header>
 
-<section id="about">
+<section id="about" class="reveal">
   <div class="sec-head"><span class="sec-tc">00:00:14:00</span><h2>About</h2><div class="sec-line"></div></div>
   <div class="about-grid">
     <div>
@@ -301,7 +390,7 @@
   </div>
 </section>
 
-<section id="film">
+<section id="film" class="reveal">
   <div class="sec-head"><span class="sec-tc">00:04:32:11</span><h2>Film &amp; motion</h2><div class="sec-line"></div></div>
   <div class="film-grid">
     <div class="film-card">
@@ -316,7 +405,7 @@
 
 </section>
 
-<section id="brand">
+<section id="brand" class="reveal">
   <div class="sec-head"><span class="sec-tc">00:12:55:14</span><h2>Brand &amp; ad content</h2><div class="sec-line"></div></div>
   <div class="film-grid">
     <div class="film-card">
@@ -330,7 +419,7 @@
   </div>
 </section>
 
-<section id="reel">
+<section id="reel" class="reveal">
   <div class="sec-head"><span class="sec-tc">00:09:47:02</span><h2>Camera &amp; production reel</h2><div class="sec-line"></div></div>
   <div class="reel-strip">
     <div class="frame"><iframe src="https://www.youtube.com/embed/Z1sUtsEQwfo" allowfullscreen loading="lazy"></iframe></div>
@@ -342,7 +431,7 @@
   </div>
 </section>
 
-<section id="photo">
+<section id="photo" class="reveal">
   <div class="sec-head"><span class="sec-tc">00:15:03:18</span><h2>Portraits &amp; street</h2><div class="sec-line"></div></div>
   <div class="photo-grid">
     <figure><img src="images/portrait-03.jpg" alt="Portrait, Fort Kochi" loading="lazy"><figcaption>Fort Kochi</figcaption></figure>
@@ -354,7 +443,7 @@
   </div>
 </section>
 
-<section id="documentary">
+<section id="documentary" class="reveal">
   <div class="sec-head"><span class="sec-tc">00:18:20:09</span><h2>Documentary &amp; screen grabs</h2><div class="sec-line"></div></div>
   <div class="photo-grid">
     <figure><img src="images/doc-weaving-01.jpg" alt="Handloom weaving unit, wide shot" loading="lazy"><figcaption>Handloom unit</figcaption></figure>
@@ -366,7 +455,7 @@
   </div>
 </section>
 
-<section id="food">
+<section id="food" class="reveal">
   <div class="sec-head"><span class="sec-tc">00:22:41:03</span><h2>Product &amp; food photography</h2><div class="sec-line"></div></div>
   <div class="photo-grid">
     <figure><img src="images/food-04.jpg" alt="Grilled Alfaham chicken plate" loading="lazy"><figcaption>Alfaham plate</figcaption></figure>
@@ -376,7 +465,7 @@
   </div>
 </section>
 
-<section id="projects">
+<section id="projects" class="reveal">
   <div class="sec-head"><span class="sec-tc">00:24:15:12</span><h2>Projects</h2><div class="sec-line"></div></div>
   <div class="project-card">
     <div class="project-visual">
@@ -393,13 +482,13 @@
         <span class="project-tag">Privacy-first</span>
       </div>
       <div class="project-links">
-        <a href="https://bittupbaju.github.io/clipbench/" target="_blank" rel="noopener">Try it ↗</a>
+        <a href="https://insanehooman.github.io/clipbench/" target="_blank" rel="noopener">Try it ↗</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="skills">
+<section id="skills" class="reveal">
   <div class="sec-head"><span class="sec-tc">00:21:56:07</span><h2>Skills</h2><div class="sec-line"></div></div>
   <div class="skill-row">
     <span class="skill-pill">Creative direction</span>
@@ -414,7 +503,7 @@
   </div>
 </section>
 
-<section id="contact" class="contact">
+<section id="contact" class="contact reveal">
   <div class="sec-head"><span class="sec-tc">00:26:40:00</span><h2>Contact</h2><div class="sec-line"></div></div>
   <h2 style="text-transform:none; font-family:'Inter',sans-serif; color:#D7D0C0; font-weight:400;">Open to creative direction, cinematography, and brand content work — reach out any time.</h2>
   <div class="contact-links">
@@ -450,6 +539,71 @@
     img.setAttribute('draggable', 'false');
     img.addEventListener('dragstart', (e) => e.preventDefault());
   });
+
+  /* custom cursor */
+  (function(){
+    const dot = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
+    const label = document.querySelector('.cursor-label');
+    if(!dot || !window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    let rx=0, ry=0, mx=0, my=0;
+    window.addEventListener('mousemove', e=>{
+      mx=e.clientX; my=e.clientY;
+      dot.style.left=mx+'px'; dot.style.top=my+'px';
+      label.style.left=mx+'px'; label.style.top=(my-38)+'px';
+    });
+    (function loop(){
+      rx += (mx-rx)*0.18; ry += (my-ry)*0.18;
+      ring.style.left=rx+'px'; ring.style.top=ry+'px';
+      requestAnimationFrame(loop);
+    })();
+    const hoverTargets = 'a, button, .film-card, .photo-grid .frame, .reel-strip .frame, .project-card, .now-card';
+    document.querySelectorAll(hoverTargets).forEach(el=>{
+      el.addEventListener('mouseenter', ()=>{
+        ring.classList.add('hover');
+        const isPlay = el.closest('.frame') || el.classList.contains('frame');
+        const isCard = el.classList.contains('project-card') || el.classList.contains('film-card');
+        label.textContent = isPlay ? 'PLAY' : (isCard ? 'VIEW' : '');
+        if(label.textContent) label.classList.add('show');
+      });
+      el.addEventListener('mouseleave', ()=>{
+        ring.classList.remove('hover');
+        label.classList.remove('show');
+      });
+    });
+  })();
+
+  /* scroll reveal */
+  (function(){
+    const targets = document.querySelectorAll('.reveal, .film-grid, .photo-grid, .reel-strip');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold:0.15, rootMargin:'0px 0px -60px 0px' });
+    targets.forEach(t=>io.observe(t));
+  })();
+
+  /* scrubber active state */
+  (function(){
+    const links = document.querySelectorAll('.scrubber a');
+    if(!links.length) return;
+    const sections = Array.from(links).map(a=>document.querySelector(a.getAttribute('href')));
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        const idx = sections.indexOf(entry.target);
+        if(idx===-1) return;
+        if(entry.isIntersecting){
+          links.forEach(l=>l.classList.remove('active'));
+          links[idx].classList.add('active');
+        }
+      });
+    }, { threshold:0.4 });
+    sections.forEach(s=>{ if(s) io.observe(s); });
+  })();
 </script>
 
 </body>
