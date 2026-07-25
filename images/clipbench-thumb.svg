@@ -1,0 +1,80 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#131210"/>
+
+  <line x1="0" y1="0" x2="1600" y2="1000" stroke="#241F17" stroke-width="1"/>
+  <rect x="80" y="80" width="1440" height="840" fill="none" stroke="#322E26" stroke-width="1"/>
+
+  <rect x="180" y="230" width="900" height="540" rx="6" fill="#1B1915" stroke="#322E26" stroke-width="1.5"/>
+  <text x="220" y="270" font-family="JetBrains Mono, monospace" font-size="15" letter-spacing="3" fill="#948C7C">RAW · 16:9</text>
+
+  <g opacity="0.55">
+    <rect x="240" y="330" width="90" height="60" fill="#2A2620"/>
+    <rect x="340" y="360" width="60" height="90" fill="#2A2620"/>
+    <rect x="410" y="320" width="120" height="70" fill="#2A2620"/>
+    <rect x="240" y="470" width="140" height="80" fill="#2A2620"/>
+    <rect x="700" y="330" width="80" height="120" fill="#2A2620"/>
+    <rect x="800" y="380" width="90" height="70" fill="#2A2620"/>
+    <rect x="600" y="480" width="150" height="90" fill="#2A2620"/>
+  </g>
+
+  <rect x="500" y="270" width="260" height="460" fill="none" stroke="#E8A33D" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="500" y="255" font-family="JetBrains Mono, monospace" font-size="15" letter-spacing="2" fill="#E8A33D">AUTO CROP · 9:16</text>
+
+  <rect x="240" y="640" width="800" height="14" rx="7" fill="#0F0D0A"/>
+  <g fill="#4FA6A2">
+    <rect x="250" y="643" width="14" height="8"/>
+    <rect x="270" y="641" width="10" height="12"/>
+    <rect x="286" y="644" width="18" height="6"/>
+    <rect x="310" y="640" width="10" height="14"/>
+    <rect x="326" y="642" width="24" height="10"/>
+  </g>
+  <g fill="#37332A">
+    <rect x="356" y="643" width="130" height="8"/>
+  </g>
+  <text x="356" y="632" font-family="JetBrains Mono, monospace" font-size="14" fill="#948C7C">TRIMMED — DEAD AIR REMOVED</text>
+  <g fill="#4FA6A2">
+    <rect x="492" y="640" width="10" height="14"/>
+    <rect x="508" y="643" width="20" height="8"/>
+    <rect x="534" y="641" width="14" height="12"/>
+    <rect x="554" y="644" width="26" height="6"/>
+    <rect x="586" y="640" width="10" height="14"/>
+    <rect x="602" y="642" width="18" height="10"/>
+    <rect x="626" y="643" width="30" height="8"/>
+    <rect x="662" y="641" width="12" height="12"/>
+    <rect x="680" y="644" width="24" height="6"/>
+    <rect x="710" y="640" width="14" height="14"/>
+    <rect x="730" y="643" width="10" height="8"/>
+    <rect x="746" y="641" width="20" height="12"/>
+    <rect x="772" y="644" width="16" height="6"/>
+    <rect x="794" y="640" width="30" height="14"/>
+    <rect x="830" y="642" width="10" height="10"/>
+    <rect x="846" y="643" width="24" height="8"/>
+    <rect x="876" y="641" width="14" height="12"/>
+    <rect x="896" y="644" width="20" height="6"/>
+    <rect x="922" y="640" width="18" height="14"/>
+    <rect x="946" y="643" width="14" height="8"/>
+    <rect x="966" y="641" width="20" height="12"/>
+    <rect x="992" y="644" width="26" height="6"/>
+  </g>
+
+  <line x1="700" y1="720" x2="700" y2="820" stroke="#4FA6A2" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M690 810 L700 826 L710 810 Z" fill="#4FA6A2"/>
+
+  <rect x="1180" y="220" width="300" height="560" rx="18" fill="#0B0A08" stroke="#322E26" stroke-width="2"/>
+  <rect x="1198" y="250" width="264" height="470" rx="4" fill="#000"/>
+  <g opacity="0.6">
+    <rect x="1198" y="250" width="264" height="470" fill="#26221B"/>
+    <rect x="1230" y="330" width="90" height="130" fill="#332E24"/>
+    <rect x="1330" y="400" width="70" height="90" fill="#332E24"/>
+  </g>
+  <rect x="1218" y="640" width="224" height="46" rx="4" fill="#0B0A08" opacity="0.85"/>
+  <text x="1330" y="660" font-family="Inter Tight, sans-serif" font-size="16" fill="#F3ECDE" text-anchor="middle">captions burned in</text>
+  <text x="1330" y="678" font-family="Inter Tight, sans-serif" font-size="13" fill="#E8A33D" text-anchor="middle">multi-language</text>
+  <rect x="1290" y="726" width="80" height="8" rx="4" fill="#322E26"/>
+
+  <text x="180" y="900" font-family="Instrument Serif, serif" font-style="italic" font-size="46" fill="#F3ECDE">Clipbench</text>
+  <text x="180" y="940" font-family="JetBrains Mono, monospace" font-size="15" letter-spacing="3" fill="#948C7C">RAW FOOTAGE IN — VERTICAL, CAPTIONED CLIPS OUT</text>
+
+  <circle cx="1500" cy="920" r="4" fill="#E8A33D"/>
+  <text x="1520" y="925" font-family="JetBrains Mono, monospace" font-size="14" fill="#948C7C">IN-BROWSER · PRIVATE</text>
+</svg>
