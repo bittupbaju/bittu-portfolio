@@ -1,0 +1,14 @@
+{
+  "name": "bittu-portfolio-site",
+  "version": "1.0.0",
+  "description": "Portfolio site for Bittu P Baju - Cinematographer & Creative Director",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "lint": "echo 'No linting configured'"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.1.0"
+  },
+  "devDependencies": {}
+}
